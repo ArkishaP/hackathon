@@ -13,15 +13,8 @@ import com.hackathon.model.Subject;
 public class SubjectServiceImpl implements SubjectService {
 	@Autowired
 	SubjectDao subjectDao;
-	public List<String> getSubjects() {
+	public List<Subject> getSubjects() {
 		return subjectDao.getSubjects();
-	}
-	public List<String> getSubjectLevels(String subjectName) {
-		List<String> rawLevels = new ArrayList<String>();
-//		for(String level:rawLevels){
-//			if(level)
-//		}
-		return null;
 	}
 
 }

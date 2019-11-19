@@ -10,9 +10,9 @@
 <body>
 <h1>${subjects }</h1>
 <c:forEach items="${subjects}" var="subject">
-    <a href="selectsubject.do?subject=${subject}">
+    <a href="exam.do?subject=${subject.subjectId}">
     <div>
-        ${subject}
+        ${subject.subjectName}
     </div>
     </a>
 </c:forEach>
