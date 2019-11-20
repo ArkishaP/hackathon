@@ -69,15 +69,14 @@ public class StudentController {
 		
 
 	}
-	@RequestMapping(value = "/loginUser", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginUserget() {
 		ModelAndView mav=new ModelAndView();
-		
 		mav.setViewName("login");
 		return mav;
 	 }
 	
-	@RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginUser(HttpServletRequest request) {
 	    
 		String studentId = request.getParameter("studentid");
@@ -94,7 +93,6 @@ public class StudentController {
 		ModelAndView mav=new ModelAndView();
 		if(flag){
 			mav.setViewName("redirect:/dashboard.do");
-			
 			HttpSession session = request.getSession();
 			session.setAttribute("studentId", studentId);
 		}

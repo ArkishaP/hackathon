@@ -41,11 +41,11 @@
 <body>
 <center>
 <h2>Admin Login</h2>
-<form class="login-form" action="login.do" method="post" onsubmit="return valid()">
+<form class="login-form" action="adminLogin.do" method="post" onsubmit="return valid()">
             Name:
             <input type="text" placeholder="username" id="username" name="username"/>
 			<div id='id1' class="error"></div>
-			Pasword:
+			Password:
             <input type="password" placeholder="password" id="password" name="password"/>
 			<div id='id2' class="error"></div>
 			<br>

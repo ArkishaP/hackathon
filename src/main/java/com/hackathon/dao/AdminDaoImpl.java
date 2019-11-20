@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 import org.springframework.stereotype.Repository;
 
 import com.hackathon.model.Admin;
-import com.hackathon.model.Student;
+import com.hackathon.model.Subject;
 @Repository("admindao")
 public class AdminDaoImpl implements AdminDaoIntf{
 
@@ -25,10 +25,26 @@ public class AdminDaoImpl implements AdminDaoIntf{
 		catch(Exception e) {System.out.println(e); }
 		if (a!=null)
 			flag=true;
-		em.persist(a);
+//		em.persist(a);
 		em.close();
 		System.out.println(a);
 		return flag;
+	}
+
+	public boolean addSubject(Subject subject) {
+		boolean flag = false;
+		try{
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu"); 
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(subject);
+			em.getTransaction().commit();
+			em.close();
+			flag = true;
+			}catch(Exception e){
+				System.out.println("Error:"+e);
+			}
+			return flag;
 	}
 
 }
