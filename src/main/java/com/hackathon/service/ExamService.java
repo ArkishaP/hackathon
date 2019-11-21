@@ -13,4 +13,5 @@ public interface ExamService {
 	
 	//generate questions
 	public List<Question> getQuestions(String subjectId);
+	
 }

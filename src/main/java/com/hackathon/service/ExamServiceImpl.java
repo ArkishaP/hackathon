@@ -17,16 +17,21 @@ public class ExamServiceImpl implements ExamService {
 	public List<String> getSubjectNames() {
 		return examDao.getSubjectNames();
 	}
-
+	
 	public String selectExam(String studentId, String subjectName) {
-		String exam = null;
+		String exam = "";
 		List<String> subjectIds = examDao.getSubjectIds(subjectName);
+		System.out.println(subjectIds);
 		List<String> examIds = new ArrayList<String>();
 		for(String subjectId:subjectIds) {
 			examIds = examDao.findExamId(studentId, subjectId);
-			for(String examId: examIds) {
-				if(examDao.checkScore(examId))
-					exam = subjectId;
+			if(examIds.size()<=0){
+				return subjectId;
+			}else{
+				for(String examId: examIds) {
+					if(examDao.checkScore(examId))
+						exam = subjectId;
+				}
 			}
 		}
 		return exam;

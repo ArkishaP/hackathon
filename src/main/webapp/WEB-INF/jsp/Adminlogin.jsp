@@ -41,7 +41,7 @@
 <body>
 <center>
 <h2>Admin Login</h2>
-<form class="login-form" action="login" method="post" onsubmit="return valid()">
+<form class="login-form" action="login.do" method="post" onsubmit="return valid()">
             Name:
             <input type="text" placeholder="username" id="username" name="username"/>
 			<div id='id1' class="error"></div>

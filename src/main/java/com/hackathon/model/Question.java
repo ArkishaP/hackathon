@@ -38,7 +38,7 @@ public class Question {
 	public String toString() {
 		return "Question [questionId=" + questionId + ", question=" + question + ", option1=" + option1 + ", option2="
 				+ option2 + ", option3=" + option3 + ", option4=" + option4 + ", correct_answer=" + correctAnswer
-				+ ", subject=" + subject + "]";
+				+ "]";
 	}
 
 	public Question() {

@@ -8,17 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-//CREATE TABLE student(
-//		id VARCHAR2(5) NOT NULL PRIMARY KEY,
-//		first_name VARCHAR2(50),
-//		last_name VARCHAR2(50),
-//		gender VARCHAR2(10),
-//		email VARCHAR2(100),
-//		password VARCHAR2(100),
-//		birth_date DATE,
-//		address VARCHAR2(100),
-//		contact_number VARCHAR2(10)	
-//	);
+/*CREATE TABLE student(
+		id VARCHAR2(5) NOT NULL PRIMARY KEY,
+		first_name VARCHAR2(50),
+		last_name VARCHAR2(50),
+		gender VARCHAR2(10),
+		email VARCHAR2(100),
+		password VARCHAR2(100),
+		birth_date DATE,
+		address VARCHAR2(100),
+		contact_number VARCHAR2(10)	
+	);*/
 
 @Entity
 public class Student {

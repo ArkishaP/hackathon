@@ -10,12 +10,13 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-//CREATE TABLE subject(
-//		id VARCHAR2(4) NOT NULL PRIMARY KEY,
-//		name VARCHAR2(50),
-//		difficulty VARCHAR2(2),
-//		duration NUMBER(3)	
-//	);
+/*CREATE TABLE subject(
+		id VARCHAR2(4) NOT NULL PRIMARY KEY,
+		name VARCHAR2(50),
+		difficulty VARCHAR2(2),
+		duration NUMBER(3),
+		question_file VARCHAR2(200)
+	);*/
 
 @Entity
 public class Subject {
@@ -26,6 +27,8 @@ public class Subject {
 	private String subjectName;
 	private String difficulty;
 	private int duration;
+	@Column(name="question_file")
+	private String questionFile;
 	
 	@OneToMany(mappedBy="subject",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Question> questions = new ArrayList<Question>();
@@ -69,6 +72,14 @@ public class Subject {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+	
+	public String getQuestionFile() {
+		return questionFile;
+	}
+
+	public void setQuestionFile(String questionFile) {
+		this.questionFile = questionFile;
+	}
 
 	public Subject() {
 		super();
@@ -77,11 +88,9 @@ public class Subject {
 	@Override
 	public String toString() {
 		return "Subject [subjectId=" + subjectId + ", subjectName=" + subjectName + ", difficulty=" + difficulty
-				+ ", duration=" + duration + "]";
+				+ ", duration=" + duration + ", questionFile=" + questionFile + ", questions=" + questions + "]";
 	}
-	
-	
-	
+
 	
 	
 }

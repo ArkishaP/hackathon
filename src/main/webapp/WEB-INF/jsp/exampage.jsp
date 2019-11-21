@@ -9,5 +9,8 @@
 <body>
 
 ${subject }
+${student }<br>
+${exam }<br>
+${questions }
 </body>
 </html>

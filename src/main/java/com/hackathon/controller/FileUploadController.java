@@ -17,7 +17,7 @@ package com.hackathon.controller;
 import com.hackathon.service.FileUploadService;
 
 
-	@Controller
+//	@Controller
 	public class FileUploadController {
 		
 		@Autowired

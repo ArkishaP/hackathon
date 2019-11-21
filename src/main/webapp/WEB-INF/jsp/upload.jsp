@@ -10,6 +10,22 @@
 <h1>Spring MVC file upload example</h1>
 
 <form method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
+    <div>
+        <label>Subject Id:</label>
+        <input type="text" name="subjectId" id="subjectId">
+    </div>
+    <div>
+        <label>Subject Name:</label>
+        <input type="text" name="subjectName" id="subjectName">
+    </div>
+    <div>
+        <label>Difficulty:</label>
+        <input type="text" name="difficulty" id="difficulty">
+    </div>
+    <div>
+        <label>Subject Id:</label>
+        <input type="text" name="subjectId" id="subjectId">
+    </div>
     <input type="file" name="file" /><br/>
     <input type="submit" value="Submit" />
 </form>

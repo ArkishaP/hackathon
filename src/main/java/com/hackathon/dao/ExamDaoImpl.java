@@ -9,7 +9,9 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Repository;
 
+import com.hackathon.model.Exam;
 import com.hackathon.model.Question;
+import com.hackathon.model.Student;
 import com.hackathon.model.Subject;
 
 @Repository("examDao")
@@ -49,9 +51,13 @@ public class ExamDaoImpl implements ExamDao {
 		List<String> exams = new ArrayList<String>();
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 		EntityManager em = emf.createEntityManager();
-		exams = em.createQuery("SELECT e.examId FROM Exam e where e.studentId=:studentId AND e.subjectId=:subjectId")
-				.setParameter("subjectId", subjectId)
-				.setParameter("studentId", studentId).getResultList();
+		Student student = new Student();
+		student.setStudentId(studentId);
+		Subject subject = new Subject();
+		subject.setSubjectId(subjectId);
+		exams = em.createQuery("SELECT e.examId FROM Exam e where e.student=:student AND e.subject=:subject")
+				.setParameter("subject", subject)
+				.setParameter("student", student).getResultList();
 		return exams;
 	}
 	
@@ -72,10 +78,13 @@ public class ExamDaoImpl implements ExamDao {
 	public boolean checkScore(String examId) {
 		boolean flag = false;
 		int threshold = 65;
+		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 		EntityManager em = emf.createEntityManager();
-		int score = (Integer) em.createQuery("SELECT s.score from Score s WHERE s.examId=:examId")
-				.setParameter("examId", examId)
+		Exam exam = new Exam();
+		exam.setExamId(examId);
+		int score = (Integer) em.createQuery("SELECT s.score from Score s WHERE s.exam=:exam")
+				.setParameter("exam", exam)
 				.getSingleResult();
 		if(score>=threshold)
 			flag = true;
@@ -87,8 +96,11 @@ public class ExamDaoImpl implements ExamDao {
 		List<Question> questions = new ArrayList<Question>();
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 		EntityManager em = emf.createEntityManager();
-		questions = em.createQuery("SELECT q from Question where q.subjectId=:subjectId")
-				.setParameter("subjectId", subjectId).getResultList();	
+		
+		Subject subject = new Subject();
+		subject.setSubjectId(subjectId);
+		questions = em.createQuery("SELECT q from Question q where q.subject=:subject")
+				.setParameter("subject", subject).getResultList();	
 		return questions;
 	}
 

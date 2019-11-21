@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class StudentController {
 	@Autowired
 	StudentService studentService;
 	
-	@RequestMapping(value="/studentReg", method=RequestMethod.GET)
+	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public ModelAndView getRegister(){
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("StudentRegistration");
@@ -28,7 +29,7 @@ public class StudentController {
 	}
 	
 	
-	@RequestMapping(value="/studentReg", method=RequestMethod.POST)
+	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ModelAndView registerUser(HttpServletRequest request) throws ParseException{
 		
 		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd"); 
@@ -71,6 +72,7 @@ public class StudentController {
 	@RequestMapping(value = "/loginUser", method = RequestMethod.GET)
 	public ModelAndView loginUserget() {
 		ModelAndView mav=new ModelAndView();
+		
 		mav.setViewName("login");
 		return mav;
 	 }
@@ -78,20 +80,24 @@ public class StudentController {
 	@RequestMapping(value = "/loginUser", method = RequestMethod.POST)
 	public ModelAndView loginUser(HttpServletRequest request) {
 	    
-		String studentid = request.getParameter("studentid");
+		String studentId = request.getParameter("studentid");
 		
 		String password = request.getParameter("password");
 		
 		
 		Student student =new Student();
-		student.setStudentId(studentid);
+		student.setStudentId(studentId);
 		student.setPassword(password);
 		
         boolean flag=studentService.loginStudent(student);
 		
 		ModelAndView mav=new ModelAndView();
-		if(flag)
-			mav.setViewName("dashboard");
+		if(flag){
+			mav.setViewName("redirect:/dashboard.do");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("studentId", studentId);
+		}
 			else
 			
 			mav.setViewName("login");
