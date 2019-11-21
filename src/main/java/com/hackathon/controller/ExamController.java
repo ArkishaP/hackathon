@@ -1,8 +1,5 @@
 package com.hackathon.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hackathon.model.Question;
 import com.hackathon.service.ExamService;
 
 @Controller
@@ -37,7 +33,7 @@ public class ExamController {
 		mav.addObject("student",studentId);
 		String exam = examService.selectExam(studentId, subjectName);
 		mav.addObject("exam", exam);
-		List<Question> questions = new ArrayList<Question>();
+//		List<Question> questions = new ArrayList<Question>();
 		mav.addObject("questions", examService.getQuestions(exam));
 		System.out.println(exam);
 		

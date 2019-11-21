@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: aliceblue;
+}
+.container{
+    background-color: white;
+    margin: auto;
+    margin-top: 2%;
+    padding: 5%;
+    width: 80%;
+    text-align: center;
+}
+.grid-container{
+    margin: auto;
+    margin-top: 2%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+}
+/*add media query*/
+.grid-item{
+    border: 1px solid black;
+    padding: 20%;
+    height: 50px;
+    background-color: aliceblue;
+    text-align: center;
+}

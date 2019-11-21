@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
@@ -16,12 +15,13 @@ import com.hackathon.model.Subject;
 
 @Repository("examDao")
 public class ExamDaoImpl implements ExamDao {
+	@PersistenceContext
+	EntityManager em;
 	
 	@SuppressWarnings("unchecked")
 	public List<Subject> getSubjects() {
 		List<Subject> subjects = new ArrayList<Subject>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
+		
 		subjects = em.createQuery("SELECT s from Subject s").getResultList();
 		return subjects;
 	}
@@ -29,8 +29,7 @@ public class ExamDaoImpl implements ExamDao {
 	@SuppressWarnings("unchecked")
 	public List<String> getSubjectNames() {
 		List<String> subjects = new ArrayList<String>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
+		
 		subjects = em.createQuery("Select DISTINCT s.subjectName from Subject s").getResultList();
 		return subjects;
 	}
@@ -38,8 +37,7 @@ public class ExamDaoImpl implements ExamDao {
 	@SuppressWarnings("unchecked")
 	public List<String> getSubjectIds(String subjectName) {
 		List<String> subjects = new ArrayList<String>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
+		
 		subjects = em.createQuery("SELECT s.subjectId FROM Subject s where s.subjectName=:subjectName")
 				.setParameter("subjectName", subjectName).getResultList();
 		return subjects;
@@ -49,8 +47,7 @@ public class ExamDaoImpl implements ExamDao {
 	@SuppressWarnings("unchecked")
 	public List<String> findExamId(String studentId, String subjectId) {
 		List<String> exams = new ArrayList<String>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
+		
 		Student student = new Student();
 		student.setStudentId(studentId);
 		Subject subject = new Subject();
@@ -63,8 +60,7 @@ public class ExamDaoImpl implements ExamDao {
 	
 	public String getSubjectLevel(String subjectId) {
 		String level;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
+		
 		level = (String) em.createQuery("SELECT s.difficulty FROM subject s where s.subjecId=:subjectId")
 				.setParameter("subjectId", subjectId).getSingleResult();
 		return level;
@@ -79,8 +75,7 @@ public class ExamDaoImpl implements ExamDao {
 		boolean flag = false;
 		int threshold = 65;
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
+		
 		Exam exam = new Exam();
 		exam.setExamId(examId);
 		int score = (Integer) em.createQuery("SELECT s.score from Score s WHERE s.exam=:exam")
@@ -94,8 +89,6 @@ public class ExamDaoImpl implements ExamDao {
 	@SuppressWarnings("unchecked")
 	public List<Question> getQuestions(String subjectId) {
 		List<Question> questions = new ArrayList<Question>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-		EntityManager em = emf.createEntityManager();
 		
 		Subject subject = new Subject();
 		subject.setSubjectId(subjectId);

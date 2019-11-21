@@ -5,15 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="./resources/css/exam.css">
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${subjects}" var="subject">
-    <a href="exam.do?subject=${subject}">
-    <div>
-        ${subject}
-    </div>
-    </a>
-</c:forEach>
+<div class="container">
+	<div><h1>Select exam</h1></div>
+    <div class="grid-container">
+    	<c:forEach items="${subjects}" var="subject">
+		<a href="exam.do?subject=${subject}">
+        	<div class="grid-item">
+            	<h2>${subject}</h2>
+            </div>
+		</a>
+		</c:forEach>
+	</div>
+</div>
 </body>
 </html>

@@ -1,9 +1,6 @@
 package com.hackathon.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hackathon.dao.AdminDaoIntf;
 import com.hackathon.model.Admin;
-import com.hackathon.model.Student;
 import com.hackathon.model.Subject;
 import com.hackathon.service.AdminServiceIntf;
 @Controller

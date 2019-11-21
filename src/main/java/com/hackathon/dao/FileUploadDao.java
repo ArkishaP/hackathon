@@ -15,8 +15,10 @@ import com.hackathon.model.ExcelFile;
 
 @Repository("fileUploadDao")
 public class FileUploadDao extends BaseDao{
+	
 	@Autowired
 	DriverManagerDataSource dataSource;
+	@SuppressWarnings("unchecked")
 	public boolean saveFileDataInDB(List<ExcelFile> list){
 		String sql = "insert into Question (id, Question, Option1, Option2, Option3, Option4, Correct_answer, Subject_id) "
 				+ " VALUES (:Question_no, :Question, :Option1, :Option2, :Option3, :Option4, :Correct_answer, :Subject_id)";
