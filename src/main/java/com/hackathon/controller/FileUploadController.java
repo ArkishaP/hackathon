@@ -5,7 +5,9 @@ package com.hackathon.controller;
 	import java.nio.file.Path;
 	import java.nio.file.Paths;
 
-	import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Controller;
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,14 +16,18 @@ package com.hackathon.controller;
 	import org.springframework.web.servlet.ModelAndView;
 	import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hackathon.model.Subject;
+import com.hackathon.service.AdminServiceIntf;
 import com.hackathon.service.FileUploadService;
 
 
-//	@Controller
+	@Controller
 	public class FileUploadController {
 		
 		@Autowired
-		FileUploadService fileUploadService; 
+		FileUploadService fileUploadService;
+		@Autowired
+		AdminServiceIntf adminservice;
 		
 		@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	    public ModelAndView index1() {
@@ -34,22 +40,37 @@ import com.hackathon.service.FileUploadService;
 	    }
 	    
 		@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	    public ModelAndView singleFileUpload(@RequestParam("file") MultipartFile file,
+	    public ModelAndView singleFileUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file,
 	                                   RedirectAttributes redirectAttributes) {
+			
+			String subid = request.getParameter("subid");
+			String subname = request.getParameter("subname");
+			String level = request.getParameter("level");
+			Integer duration = Integer.parseInt(request.getParameter("time"));
+			String filename = subid+".xlsx";
+			
+			Subject sub = new Subject(); 
+			sub.setSubjectId(subid);
+			sub.setSubjectName(subname);
+			sub.setDifficulty(level);
+			sub.setDuration(duration);
+			sub.setQuestionFile(filename);
+			
+			boolean flag=adminservice.addSubject(sub);
 
-	        if (file.isEmpty()) {
+			if (file.isEmpty()) {
 	            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
 	            return new ModelAndView("upload","message", "Please select a file to upload");
 	        }
 
 	        try {
-
+	        	
 	            // Get the file and save it somewhere
 	            byte[] bytes = file.getBytes();
-	            Path path = Paths.get("C://temp//" + file.getOriginalFilename());
+	            Path path = Paths.get("C://temp//" + filename);
 	            Files.write(path, bytes);
 	            
-	            fileUploadService.uploadFileData("C://temp//"+path.getFileName());
+	            fileUploadService.uploadFileData("C://temp//"+path.getFileName(),subid);
 
 	            redirectAttributes.addFlashAttribute("message", 
 	                        "You successfully uploaded '" + file.getOriginalFilename() + "'");
@@ -63,6 +84,11 @@ import com.hackathon.service.FileUploadService;
 			
 	        return new ModelAndView("upload","message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
 	    }
+		
+		@RequestMapping(value="/test", method=RequestMethod.POST)
+		public void test(HttpServletRequest request){
+			System.out.println("Here");
+		}
 	}
 
 

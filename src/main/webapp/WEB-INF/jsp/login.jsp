@@ -5,73 +5,92 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
+<style>
+.error{
+    color: crimson;
+}
+
+    </style>
 
 <script>
                 function valid(){
-				var id=document.getElementById('studentId').value;
+                	
+				var studentid=document.getElementById('studentid').value;
 				var password=document.getElementById('password').value;
 
-				var id4=document.getElementById('id4');
-				var id9=document.getElementById('id9');
+				var id1=document.getElementById('id1');
+				var id2=document.getElementById('id2');
 				
-				
+				var sidregex=/^[A-Za-z]{4,}[0-9]{2,}$/;
 				var passwordregex=/^[a-zA-Z)0-9$#@]{8,}$/;
-				var idregex=/^[a-zA-Z ]{4,}[0-9]{4,}$/;
+				
 				
 				var flag=true;
-				id4.innerHTML='';
-				id9.innerHTML='';
+				id1.innerHTML='';
+				id2.innerHTML='';
 				
-				 if(password=='')
+				 if(studentid=='')
 		         {
-		            id4.innerHTML='plz fill PASSWORD';
+		            id1.innerHTML='plz fill Id';
 		            flag=false;
 		         }
 		        else
-		         if(passwordregex.test(password)==false)
+		         if(sidregex.test(studentid)==false)
 		        {
-		          id4.innerHTML="IMPROPER PASSWORD";
+		          id1.innerHTML="IMPROPER Id";
 		          //location.replace()
 		          flag=false;
 
 		        }
-				 if(id=='')
+				 if(password=='')
 			        {
-			           id9.innerHTML='plz fill correct id';
+			           id2.innerHTML='plz fill password';
 			           flag=false;
 			        }
 			       else
-			        if(idregex.test(studentId)==false)
+			        if(passwordregex.test(password)==false)
 			       {
-			         id9.innerHTML="Invalid id";
+			         id2.innerHTML="Invalid Password";
 			         //location.replace()
 			         flag=false;
 
 			       }
-
+				 return flag;
+                }
     </script>
 </head>
 <body>
-<Form action="login.do"  name="Login Form" method="post">
+<Form action="login.do"  name="Login Form" method="post" onsubmit="return valid()">
         <center>
             <table>
                 <tr>
                     <th> Student id:</th>
-                    <td> <input type="text" placeholder="studentid" name='studentid' id="studentid"></input>
+                    <td> <input type="text" placeholder="studentid" name='studentid' id="studentid" ></input>
+                    <div id='id1' class="error"></div>
                     </td>
                 </tr>
                 
                 <tr>
                     <th> Password:</th>
                     <td> <input type="password" placeholder="password" name='password' id="password"  ></input>
+                    <div id='id2' class="error"></div>
                     </td>
                 </tr>
+                
                 <tr>
                         <th colspan="2">
-                        <input type="submit"  value='Make Login'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <input type="submit" value="Login" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="reset" value='Clear'>
                         </th>
                 </tr>
+                <tr>
+				<td></td>
+				<td><a href="forgetpassword.do">forget password ?</a></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><a href="register.do">Register Now !!</a></td>
+			</tr>
                  </table>
 
         </center>

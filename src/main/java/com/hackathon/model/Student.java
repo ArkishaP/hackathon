@@ -16,7 +16,8 @@ import javax.persistence.TemporalType;
 		email VARCHAR2(100),
 		password VARCHAR2(100),
 		birth_date DATE,
-		address VARCHAR2(100),
+		city VARCHAR2(50),
+		state VARCHAR2(50),
 		contact_number VARCHAR2(10)	
 	);*/
 

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +102,31 @@ public class StudentController {
 			mav.setViewName("login");
 		return mav;
 	  }
+	@RequestMapping(value = "/changepwd", method = RequestMethod.GET)
+	  public ModelAndView changepwd1(HttpServletRequest request, HttpServletResponse response) {
+	    ModelAndView mav = new ModelAndView("changepwd");
+	    return mav;
+	  }
+	
+	
+	/*@RequestMapping(value = "/changepwd", method = RequestMethod.POST)
+	  public ModelAndView changepwd2(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    String username=(String)session.getAttribute("studentid");
+    String opwd= request.getParameter("opassword");
+    String npwd= request.getParameter("npassword");
+    System.out.println(username+"  "+opwd+"  "+npwd);
+	boolean flag = studentService.changepwd(studentid,opwd,npwd);
+    if(flag) {
+	       ModelAndView mav = new ModelAndView("changepwd");
+	       mav.addObject("message", "Password is successfully updated");
+	       return mav;
+	  }
+    else {
+    	ModelAndView mav = new ModelAndView("changepwd");
+	       mav.addObject("message", "Password is not updated");
+	       return mav;
+    }
+	}*/
 
 
 }

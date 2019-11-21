@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hackathon.dao.FileUploadDao;
-import com.hackathon.model.ExcelFile;
+import com.hackathon.model.Question;
 
 
 @Service("fileUploadService")
@@ -26,7 +26,7 @@ public class FileUploadService {
 	@Autowired
 	FileUploadDao fileUploadDao;
 	
-	public String uploadFileData(String inputFilePath){
+	public String uploadFileData(String inputFilePath, String subjectId){
 		Workbook workbook = null;
 			Sheet sheet = null;
 			try 
@@ -36,28 +36,28 @@ public class FileUploadService {
 				sheet = workbook.getSheetAt(0);
 				
 				/*Build the header portion of the Output File*/
-				String headerDetails= "Question_no,Question,Option1,Option2,Option3,Option4,Correct_answer,Subject_id";
+				String headerDetails= "QuestionId,Question,Option1,Option2,Option3,Option4,CorrectAnswer";
 				String headerNames[] = headerDetails.split(",");
 				 
 				 /*Read and process each Row*/
-				 ArrayList<ExcelFile> employeeList = new ArrayList<ExcelFile>();
+				 ArrayList<Question> qlist = new ArrayList<Question>();
 				 Iterator<Row> rowIterator = sheet.iterator();
-				 
+				 rowIterator.next();
 				 while(rowIterator.hasNext()) 
 				 {
 				        Row row = rowIterator.next();
 				        //Read and process each column in row
-				        ExcelFile excelTemplateVO = new ExcelFile();
+				        Question excelTemplateVO = new Question();
 				        int count=0;
 				        while(count<headerNames.length){
 				        	String methodName = "set"+headerNames[count];
 				        	String inputCellValue = getCellValueBasedOnCellType(row,count++);
-				        	setValueIntoObject(excelTemplateVO, ExcelFile.class, methodName, "java.lang.String", inputCellValue);
+				        	setValueIntoObject(excelTemplateVO, Question.class, methodName, "java.lang.String", inputCellValue);
 				        }
 				        
-				        employeeList.add(excelTemplateVO);
+				        qlist.add(excelTemplateVO);
 				 }
-				 fileUploadDao.saveFileDataInDB(employeeList);
+				 fileUploadDao.saveFileDataInDB(qlist,subjectId);
 				 
 			}
 			catch(Exception ex){
@@ -74,12 +74,14 @@ public class FileUploadService {
 		try {	
 			String myFileName=fileName.getName();
 			String extension = myFileName.substring(myFileName.lastIndexOf("."));
+			FileInputStream fis = new FileInputStream(fileName);
 			if(extension.equalsIgnoreCase(".xls")){
-				workbook = new HSSFWorkbook(new FileInputStream(fileName));
+				workbook = new HSSFWorkbook(fis);
 			}
 			else if(extension.equalsIgnoreCase(".xlsx")){
-				workbook = new XSSFWorkbook(new FileInputStream(fileName));
+				workbook = new XSSFWorkbook(fis);
 			}
+			fis.close();
 		}
 		catch(Exception ex)
 		{

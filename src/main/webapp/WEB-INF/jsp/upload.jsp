@@ -7,30 +7,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Spring MVC file upload example</h1>
-
-<form method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
-    <div>
-        <label>Subject Id:</label>
-        <input type="text" name="subjectId" id="subjectId">
-    </div>
-    <div>
-        <label>Subject Name:</label>
-        <input type="text" name="subjectName" id="subjectName">
-    </div>
-    <div>
-        <label>Difficulty:</label>
-        <input type="text" name="difficulty" id="difficulty">
-    </div>
-    <div>
-        <label>Subject Id:</label>
-        <input type="text" name="subjectId" id="subjectId">
-    </div>
-    <input type="file" name="file" /><br/>
-    <input type="submit" value="Submit" />
+<h1>Upload Question Paper</h1>
+<form method="POST" action="test.do">
+	<input type="text" name="name">
+	<input type="submit" value="ok">
 </form>
-
-<h1>Upload Status</h1>
-<h2>Message : ${message}</h2>
+<form method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
+	
+	Set Subject Id:
+	<input type="text" name="subid" id="subid" placeholder="Subject Id"><br>
+	Give Subject Name:
+	<input type="text" name="subname" id="subname" placeholder="Subject name"><br>
+	Set Difficulty:
+	<input type="text" name="level" id="level" placeholder="Level"><br>
+	Set Duration:
+	<input type="text" name="time" id="time" placeholder="Total minutes"><br>
+	Upload your Question file here:<br>
+	<input type="file" name="file"><br>
+	<input type="submit" value="Submit">
+</form>
+	<h3>Details on Subject:</h3>
+	<h3>Message : ${message}</h3>	
+	<hr>
+	<%-- <form method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
+	Upload your Question file here:<br>
+	<input type="file" name="file"><br>
+    <input type="submit" value="Submit">
+</form> --%>
+<%-- 
+<h3>Upload Status</h3>
+<h3>Message : ${message}</h3> --%>
 </body>
 </html>

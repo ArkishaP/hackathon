@@ -5,185 +5,197 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script>
-	function valid(){
-         var id=document.getElementById('studentid').value;
-		 var first_name=document.getElementById('fname').value;
-         var last_name=document.getElementById('lname').value;
-         var email =document.getElementById('email').value;
+<style>
+.error{
+    color: crimson;
+}
+
+    </style>
+    <script>
+
+
+     function valid()
+     {
+         var studentid=document.getElementById('studentid').value;
+         var fname=document.getElementById('fname').value;
+         var lname=document.getElementById('lname').value;
+//          var gender=document.getElementById('gender').value;
+         var email=document.getElementById('email').value;
          var password=document.getElementById('password').value;
          var dob=document.getElementById('dob').value;
-          var city=document.getElementById('city').value;
+         var city=document.getElementById('city').value;
          var state=document.getElementById('state').value;
-          var contactNumber=document.getElementById('phoneno').value;
+         var phoneno=document.getElementById('phoneno').value;
          
          var id1=document.getElementById('id1');
          var id2=document.getElementById('id2');
          var id3=document.getElementById('id3');
-         var id4=document.getElementById('id4');
+ //        var id4=document.getElementById('id4');
          var id5=document.getElementById('id5');
          var id6=document.getElementById('id6');
          var id7=document.getElementById('id7');
          var id8=document.getElementById('id8');
          var id9=document.getElementById('id9');
+         var id10=document.getElementById('id10');
          
-         var idregex=/^[a-zA-Z ]{4,}[0-9]{4,}$/;
-         var first_nameregex=/^[a-zA-Z ]{12,}$/;
-         var last_nameregex=/^[a-zA-Z ]{12,}$/;
-         var emailregex=/^[a-z]{10}[0-9]{6}[@]{1}[a-z]{6}[.]{1}[a-z]{3}$/;
+		 var sidregex=/^[A-Za-z]{4,}[0-9]{2,}$/;
+         var fnameregex=/^[A-Za-z ]{4,}$/;
+         var lnameregex=/^[A-Za-z ]{4,}$/;
+         var emailregex=/^[a-z]{4,}[0-9]{2,}[@]{1}[a-z]{4,}[.][a-z]{2,}$/;
          var passwordregex=/^[a-zA-Z)0-9$#@]{8,}$/;
-         var dobregex=/^[0-9]{2}[0-9]{2}[0-9]{4}$/;
-         var cityregex=/^[a-zA-Z]{6,}$/;
-         var stateregex=/^[a-zA-Z]{6,}$/;
-       	 var contactNumberregex=/^[+]{1}[9]{1}[1]{1}[-]{1}[0-9]{10,10}$/;
+    //     var dobregex=;         
+         var phoneregex=/^[+]{1}[9]{1}[1]{1}[-]{1}[0-9]{10}$/;
+         
          
          var flag=true;
          id1.innerHTML='';
          id2.innerHTML='';
          id3.innerHTML='';
-         id4.innerHTML='';
+        // id4.innerHTML='';
          id5.innerHTML='';
          id6.innerHTML='';
          id7.innerHTML='';
          id8.innerHTML='';
          id9.innerHTML='';
+         id10.innerHTML='';
 
-         if(first_name=='')
+         //Student Id
+         if(studentid=='')
          {
-            id1.innerHTML='plz fill name';
-            /* alert("Here"); */
+            id1.innerHTML='plz fill Student Id';
             flag=false;
 
          }
          else
-           if(first_nameregex.test(first_name)==false)
+           if(sidregex.test(studentid)==false)
         {
-          id1.innerHTML="name must be in alphabets";
-          //location.replace()
+          id1.innerHTML="Improper Id";
+          
           flag=false;
 
         }
-         if(last_name=='')
+
+        //first name
+
+        if(fname=='')
          {
-            id2.innerHTML='plz fill surname';
+            id2.innerHTML='Please fill first name';
             flag=false;
          }
         else
-         if(last_nameregex.test(last_name)==false)
+         if(fnameregex.test(fname)==false)
         {
-          id2.innerHTML="not valid";
-          //location.replace()
+          id2.innerHTML="Please fill correct first name";
+          
           flag=false;
 
         }
-         if(email=='')
+        //last name
+        if(lname=='')
          {
-            id3.innerHTML='plz fill email id';
+            id3.innerHTML='Please fill last name';
+            flag=false;
+         }
+        else
+         if(lnameregex.test(lname)==false)
+        {
+          id3.innerHTML="Please fill last name";
+          
+          flag=false;
+
+        }
+        //genderid4
+        //email
+        if(email=='')
+         {
+            id5.innerHTML='Please fill your email';
             flag=false;
          }
         else
          if(emailregex.test(email)==false)
         {
-          id3.innerHTML="IMPROPER Email";
-          //location.replace()
+          id5.innerHTML="Please fill correct email";
+          
           flag=false;
 
         }
+        
         //password
-
         if(password=='')
          {
-            id4.innerHTML='plz fill PASSWORD';
+            id6.innerHTML='Please fill password';
             flag=false;
          }
         else
          if(passwordregex.test(password)==false)
         {
-          id4.innerHTML="IMPROPER PASSWORD";
-          //location.replace()
+          id6.innerHTML="Please fill correct password";
+          
           flag=false;
 
         }
+        
+        
         //date of birth
 
         
         if(dob=='')
          {
-            id5.innerHTML='plz fill DOB';
+            id7.innerHTML='plz fill DOB';
             flag=false;
          }
-        else{
+        /* else{
          var date1=new Date();
          var date2=new Date(dob);
          if(date1.getFullYear()-date2.getFullYear()<18)
          {   
-          id5.innerHTML="AGE SHOULD BE 18 YEARS";
+          id3.innerHTML="AGE SHOULD BE 18 YEARS";
          
           //location.replace()
           flag=false;
 
         }
-        }
+        } */
+        
+        //city
         if(city=='')
-        {
-           id6.innerHTML='plz fill city name';
-           flag=false;
-        }
-       else
-        if(cityregex.test(city)==false)
-       {
-         id6.innerHTML="not valid";
-         //location.replace()
-         flag=false;
-
-       }
-        if(state=='')
-        {
-           id7.innerHTML='plz fill state name';
-           flag=false;
-        }
-       else
-        if(stateregex.test(state)==false)
-       {
-         id7.innerHTML="Invalid state name";
-         //location.replace()
-         flag=false;
-
-       }
-        //phone
-        if(contactNumber=='')
          {
-            id8.innerHTML='plz fill correct mobile number';
+            id8.innerHTML='plz fill your city';
+            flag=false;
+         }
+        
+        //state
+        if(state=='')
+         {
+            id9.innerHTML='Please fill your state ';
+            flag=false;
+         }
+        
+        //phone
+        if(phoneno=='')
+         {
+            id10.innerHTML='plz fill mobile number';
             flag=false;
          }
         else
-         if(contactNumberregex.test(cont)==false)
+         if(phoneregex.test(phoneno)==false)
         {
-          id8.innerHTML="IMPROPER mobile number";
-          //location.replace()
+          id9.innerHTML="plz fill correct mobile number";
+         
           flag=false;
 
         }
-        if(id=='')
-        {
-           id9.innerHTML='plz fill correct id';
-           flag=false;
-        }
-       else
-        if(idregex.test(studentid)==false)
-       {
-         id9.innerHTML="Invalid id";
-         //location.replace()
-         flag=false;
-
-       }
-        if (flag) {
+        
+        /* if (flag) {
             document.forms['Registration Form'].submit();
-        }
-	}
+        } */
+        return flag;
+    
+     }     
         
 
     </script>
+
 </head>
 <body>
 <Form action="register.do" name="Registration Form" method="post" onsubmit="return valid()">
@@ -192,19 +204,19 @@
                 <tr>
                     <th> Student id:</th>
                     <td> <input type="text" placeholder="studentid" name='studentid' id="studentid"></input>
-                    <div id='id9' class="error"></div>
+                   <div id='id1' class="error"></div>
                     </td>
                 </tr>
                 <tr>
                     <th>First Name:</th>
-                    <td> <input type="text" placeholder="name" name='first_name' id="fname"></input>
-                    <div id='id1' class="error"></div>
+                    <td> <input type="text" placeholder="first name" name='fname' id="fname"></input>
+                    <div id='id2' class="error"></div> 
                     </td>
                 </tr>
                 <tr>
                     <th>Last Name:</th>
-                    <td> <input type="text" placeholder="name" name='last_name' id="lname"></input>
-                    <div id='id2' class="error"></div>
+                    <td> <input type="text" placeholder="last name" name='lname' id="lname"></input>
+                     <div id='id3' class="error"></div> 
                     </td>
                 </tr>
                 <tr>
@@ -217,48 +229,56 @@
                  <tr>
                         <th> Email id:</th>
                         <td> <input type="email"  name='email'  placeholder="abcdefgh@gmail.com" id="email"></input>
-                        <div id='id3' class="error"></div>
+                         <div id='id5' class="error"></div>
                         </td>
                 </tr>
                 <tr>
                     <th> Password:</th>
                     <td> <input type="password" placeholder="password" name='password' id="password"  ></input>
-                    <div id='id4' class="error"></div>
+                     <div id='id6' class="error"></div>
                     </td>
                 </tr>
                  <tr>
                         <th> Date Of Birth:</th>
                         <td> <input type="date"  name='dob'  id="dob"></input>
-                        <div id='id5' class="error"></div>
+                        <div id='id7' class="error"></div>
                         </td>
                 </tr>
                 <tr>
                     <th>City:</th>
                     <td> <input type="text"  name='city' id="city"  ></input>
-                    <div id='id6' class="error"></div>
+                    <div id='id8' class="error"></div>
                     </td>
                 </tr>
                 <tr>
                     <th> State:</th>
                     <td> <input type="text" name='state' id="state"  ></input>
-                    <div id='id7' class="error"></div>
+                    <div id='id9' class="error"></div>
                     </td>
                 </tr>
                 <tr>
                         <th> Contact no.: </th>
                         <td> <input type="text"  name='phoneno'  id="phoneno"></input>
-                        <div id='id8' class="error"></div>
+                        <div id='id10' class="error"></div> 
                         </td>
                 </tr>
+                <tr>
+				<td>Upload Profile Image</td>
+				<td><input type="file" name="file" id="image"></td>
+			</tr>
                
                 
                 <tr>
                         <th colspan="2">
-                        <input type=button value=ok onclick="valid()">
-                        <!-- <input type="submit"  value='Make registration'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                        <input type="submit" value="submit">
+                        
                         <input type="reset" value='Clear'>
                         </th>
                 </tr>
+                <tr>
+				<td></td>
+				<td><a href="login.do">Login Now !!</a></td>
+			</tr>
             </table>
 
         </center>

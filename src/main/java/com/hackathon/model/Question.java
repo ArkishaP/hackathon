@@ -6,16 +6,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-//CREATE TABLE question(
-//		id VARCHAR2(5) NOT NULL PRIMARY KEY,
-//		subject_id VARCHAR2(4) REFERENCES subject(id),
-//		question VARCHAR2(500),
-//		option1 VARCHAR2(500),
-//		option2 VARCHAR2(500),
-//		option3 VARCHAR2(500),
-//		option4 VARCHAR2(500),
-//		correct_answer VARCHAR2(500)
-//	);
+/*CREATE TABLE question(
+		id VARCHAR2(5) NOT NULL PRIMARY KEY,
+		subject_id VARCHAR2(4) REFERENCES subject(id),
+		question VARCHAR2(500),
+		option1 VARCHAR2(500),
+		option2 VARCHAR2(500),
+		option3 VARCHAR2(500),
+		option4 VARCHAR2(500),
+		correct_answer VARCHAR2(500)
+	);*/
 
 @Entity
 public class Question {
@@ -93,11 +93,11 @@ public class Question {
 		this.option4 = option4;
 	}
 
-	public String getCorrect_answer() {
+	public String getCorrectAnswer() {
 		return correctAnswer;
 	}
 
-	public void setCorrect_answer(String correctAnswer) {
+	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
 

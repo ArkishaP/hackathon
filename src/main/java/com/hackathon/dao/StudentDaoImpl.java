@@ -40,4 +40,20 @@ public class StudentDaoImpl implements StudentDao {
 		return flag;
 	}
 
+	/*public boolean changepwd(String studentid,String opwd, String npwd) {
+		  boolean flag=false;
+		  EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+		  EntityManager em = emf.createEntityManager();	  
+		  Query query = em.createQuery("update Student u set u.password=:npwd where u.studentid=:studentid and u.password=:opwd");
+		  query.setParameter("npwd", npwd);
+		  query.setParameter("opwd", opwd);
+		  query.setParameter("studentid", studentid);
+		  em.getTransaction().begin();
+		  int r = query.executeUpdate();
+		  em.getTransaction().commit();
+		  em.close();
+		  if(r>0)
+			  flag=true;
+		  return flag;
+	  }*/
 }

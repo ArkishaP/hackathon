@@ -24,8 +24,20 @@ public class ExamController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/exam", method=RequestMethod.GET)
-	public ModelAndView goToExamPage(HttpServletRequest request, HttpSession session){
+	@RequestMapping(value="/exam")
+	public ModelAndView redirectToInstructions(HttpServletRequest request, HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		String subjectName = request.getParameter("subject");
+		String studentId = (String)session.getAttribute("studentId");
+		String exam = examService.selectExam(studentId, subjectName);
+		mav.addObject("subject", subjectName);
+		mav.addObject("exam",exam);
+		mav.setViewName("instructions");
+		return mav;
+	}
+	
+	@RequestMapping(value="/startexam", method=RequestMethod.GET)
+	public ModelAndView redirectToExamPage(HttpServletRequest request, HttpSession session){
 		ModelAndView mav = new ModelAndView("exampage");
 		String subjectName = request.getParameter("subject");
 		String studentId = (String)session.getAttribute("studentId");
@@ -33,7 +45,6 @@ public class ExamController {
 		mav.addObject("student",studentId);
 		String exam = examService.selectExam(studentId, subjectName);
 		mav.addObject("exam", exam);
-//		List<Question> questions = new ArrayList<Question>();
 		mav.addObject("questions", examService.getQuestions(exam));
 		System.out.println(exam);
 		

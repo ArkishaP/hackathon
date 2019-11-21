@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+The exam is for ${exam.duration }
+<a href="startexam.do?subject="+${subject }>Start Exam</a>
 </body>
 </html>

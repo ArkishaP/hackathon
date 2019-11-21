@@ -5,6 +5,13 @@ import java.util.List;
 import com.hackathon.model.Question;
 
 public interface ExamService {
+	
+	// get distinct subject names
+	
+	//
+	
+	
+	// ----------------------------------------------------------------------
 	// method to get all distinct subject names
 	public List<String> getSubjectNames();
 	

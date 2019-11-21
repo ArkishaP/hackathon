@@ -23,4 +23,8 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.loginStudent(student);
 	}
 
+/*	 public boolean changepwd(String studentid,String opwd, String npwd) {
+		  return studentDao.changepwd(studentid, opwd,  npwd);
+	  }*/
+
 }
