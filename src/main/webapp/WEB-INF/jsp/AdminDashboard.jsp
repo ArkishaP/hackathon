@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" href="./resources/css/admin.css">
+<title>Admin Dashboard</title>
+
 </head>
 <body>
 

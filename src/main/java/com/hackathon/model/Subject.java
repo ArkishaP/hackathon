@@ -30,7 +30,7 @@ public class Subject {
 	@Column(name="question_file")
 	private String questionFile;
 	
-	@OneToMany(mappedBy="subject",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="subject",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Question> questions = new ArrayList<Question>();
 
 	public String getSubjectId() {

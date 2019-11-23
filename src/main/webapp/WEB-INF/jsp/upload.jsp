@@ -4,31 +4,75 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Adding Question..</title>
+<link rel="stylesheet" href="./resources/css/admin.css">
+<style type="text/css">
+ .btn{
+            border: 0.5px solid rgb(121, 116, 116);
+            border-radius: 20px;
+            width: 80%;
+            height: 30px;
+            color:rgb(21, 80, 207);
+            /* background-color: white; */
+            
+        }
+         button:hover{
+            background-color: #ddd;
+            background-color: black;
+            color:rgb(253, 253, 253);
+
+        }
+        .ucontainer {
+            text-align: center;
+            width: 30%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255,0.1);
+            margin: auto;
+            margin-top: 8%; 
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+
+</style>
 </head>
 <body>
-<h1>Upload Question Paper</h1>
-<form method="POST" action="test.do">
-	<input type="text" name="name">
-	<input type="submit" value="ok">
-</form>
-<form method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
+<div class="ucontainer">
+	<h1>Upload Question Paper</h1>
+
+	<form class="upload-form" method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
 	
+	<div class="form-element">
 	Set Subject Id:
-	<input type="text" name="subid" id="subid" placeholder="Subject Id"><br>
+	<input type="text" name="subid" id="subid" placeholder="Subject Id">
+	</div>
+	<br>
+	<div class="form-element">
 	Give Subject Name:
-	<input type="text" name="subname" id="subname" placeholder="Subject name"><br>
+	<input type="text" name="subname" id="subname" placeholder="Subject name">
+	</div>
+	<br>
+	<div class="form-element">
 	Set Difficulty:
-	<input type="text" name="level" id="level" placeholder="Level"><br>
+	<input type="text" name="level" id="level" placeholder="Level">
+	</div>
+	<br>
+	<div class="form-element">
 	Set Duration:
-	<input type="text" name="time" id="time" placeholder="Total minutes"><br>
-	Upload your Question file here:<br>
-	<input type="file" name="file"><br>
-	<input type="submit" value="Submit">
+	<input type="text" name="time" id="time" placeholder="Total minutes">
+	<br>
+	</div>
+	
+	<p Style="text-align: inherit;">Upload Question file:</p>	
+	
+	<input type="file" name="file" class="btn">
+	<br>
+	 <button type="submit" class="btn">Submit</button>
+	<!-- <input type="submit" value="Submit"> -->
 </form>
-	<h3>Details on Subject:</h3>
-	<h3>Message : ${message}</h3>	
-	<hr>
+	
+	<div style="font-style: italic; color: red;">${message}</div>	
+	
+</div>
 	<%-- <form method="POST" action="${pageContext.request.contextPath}/upload.do" enctype="multipart/form-data">
 	Upload your Question file here:<br>
 	<input type="file" name="file"><br>

@@ -13,7 +13,7 @@
 	<div><h1>Select exam</h1></div>
     <div class="grid-container">
     	<c:forEach items="${subjects}" var="subject">
-		<a href="exam.do?subject=${subject}">
+		<a href="instruction.do?subject=${subject}">
         	<div class="grid-item">
             	<h2>${subject}</h2>
             </div>

@@ -8,16 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-${subject }
+
+<%=session.getAttribute("subject") %>
+<hr>
+${question }
+
+<a href="">Finish Exam</a>
+<%-- ${subject }
 ${student }<br>
 ${exam }<br>
 ${questions }
-<form>
+<hr>
+<form method="POST">
 <c:forEach items="${questions }" var="qrecord">
-	<div>
-	${qrecord.question }
-	</div>
+<div>
+	<label>${qrecord.question}</label>
+	<input type="radio" name="option" value="${qrecord.option1 }">${qrecord.option2 }
+	<input type="radio" name="option" value="${qrecord.option2 }">${qrecord.option2 }
+	<input type="radio" name="option" value="${qrecord.option3 }">${qrecord.option3 }
+	<input type="radio" name="option" value="${qrecord.option4 }">${qrecord.option4 }
+	<input type="submit" value="answer">
 </c:forEach>
-</form>
+</div>
+</form> --%>
 </body>
 </html>

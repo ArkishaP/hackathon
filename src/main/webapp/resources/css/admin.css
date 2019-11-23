@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+/* .header {
+  background-image: url("header.jpg");
+  padding: 20px;
+  text-align: center;
+} */
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #000000;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+background-color: rgb(255, 165, 132);
+ color: rgb(255, 255, 255);
+}
+
+/**/
+        body{
+           /* background-color: cornflowerblue;*/
+            background-image: url('../img/2.jpg');
+
+        }
+         h2{
+            color: rgb(255, 165, 132);
+
+        }
+        h1{
+            color: rgb(255, 165, 132);
+
+        }
+        .lcontainer {
+            text-align: center;
+            width: 30%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255,0.1);
+            margin: auto;
+            margin-top: 12%;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+    	
+    	.ucontainer {
+            text-align: center;
+            width: 30%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255,0.1);
+            margin: auto;
+            /* margin-top: 8%; */
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+    	    
+        .form-element input {
+            display: block;
+            width: 80%;
+            height: 30px;
+            margin: auto;
+            background-color: rgb(235, 232, 232);
+            border-radius: 20px;
+        }
+       
+        
+        
+        
+       
+           

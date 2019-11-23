@@ -60,7 +60,7 @@
     </script>
 </head>
 <body>
-<Form action="login.do"  name="Login Form" method="post" onsubmit="return valid()">
+<Form action="login.do"  name="Login Form" method="post">
         <center>
             <table>
                 <tr>
